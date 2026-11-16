@@ -1,1 +1,112 @@
-<p>tenant-form works!</p>
+<div class="tenant-form-container">
+
+  <h2>{{ editingId() ? 'Update Tenant' : 'Register New Tenant' }}</h2>
+
+  <form [formGroup]="tenantForm" (ngSubmit)="onSubmit()">
+
+    <!-- Tenant Name -->
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Enter tenant's full name"
+      />
+
+      @if (tenantForm.controls.name.touched && tenantForm.controls.name.invalid) {
+        <small class="error">Name is required.</small>
+      }
+    </div>
+
+    <!-- Contact Number -->
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input
+        id="contactNumber"
+        type="text"
+        formControlName="contactNumber"
+        placeholder="Enter contact number"
+      />
+
+      @if (tenantForm.controls.contactNumber.touched && tenantForm.controls.contactNumber.invalid) {
+        <small class="error">Contact number is required.</small>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter email address"
+      />
+
+      @if (tenantForm.controls.email.touched && tenantForm.controls.email.invalid) {
+        <small class="error">Email is required.</small>
+      }
+    </div>
+
+    <!-- Monthly Rent -->
+    <div class="form-group">
+      <label for="monthlyRent">Monthly Rent</label>
+      <input
+        id="monthlyRent"
+        type="number"
+        formControlName="monthlyRent"
+        placeholder="Enter monthly rent"
+      />
+
+      @if (tenantForm.controls.monthlyRent.touched && tenantForm.controls.monthlyRent.invalid) {
+        <small class="error">Monthly rent is required.</small>
+      }
+    </div>
+
+    <!-- Move In Date -->
+    <div class="form-group">
+      <label for="moveInDate">Move-in Date</label>
+      <input
+        id="moveInDate"
+        type="date"
+        formControlName="moveInDate"
+      />
+
+      @if (tenantForm.controls.moveInDate.touched && tenantForm.controls.moveInDate.invalid) {
+        <small class="error">Move-in date is required.</small>
+      }
+    </div>
+
+    <!-- Status -->
+    <div class="form-group">
+      <label for="status">Tenant Status</label>
+      <select id="status" formControlName="status">
+        <option value="">Select Status</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+
+      @if (tenantForm.controls.status.touched && tenantForm.controls.status.invalid) {
+        <small class="error">Please select a tenant status.</small>
+      }
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-actions">
+
+      <button type="submit" [disabled]="tenantForm.invalid">
+        {{ editingId() ? 'Update Tenant' : 'Register Tenant' }}
+      </button>
+
+      @if (editingId()) {
+        <button type="button" (click)="cancelEdit()">
+          Cancel
+        </button>
+      }
+
+    </div>
+
+  </form>
+
+</div>
