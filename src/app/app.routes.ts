@@ -8,5 +8,5 @@ export const routes: Routes = [
     { path: 'tenantform', component: TenantForm},
     { path: 'tenant/:id/edit', component: TenantForm},
     { path: 'tenantlist', component: TenantList},
-    { path: '', redirectTo: 'home', component: TenantList},
+    { path: '', redirectTo: 'home', pathMatch: 'full'},
 ];
