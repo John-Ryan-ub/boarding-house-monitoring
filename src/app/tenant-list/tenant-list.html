@@ -1,1 +1,47 @@
-<p>tenant-list works!</p>
+
+<div class="tenant-container">
+
+  <h2>Tenant Management</h2>
+  <p>Manage all registered tenants in your boarding house.</p>
+
+  <!-- Floor Filter -->
+  <div class="floor-filter">
+    <button (click)="setFloor('All')">All</button>
+    <button (click)="setFloor('1st Floor')">1st Floor</button>
+    <button (click)="setFloor('2nd Floor')">2nd Floor</button>
+    <button (click)="setFloor('3rd Floor')">3rd Floor</button>
+  </div>
+
+  <!-- Tenant List -->
+  <div class="tenant-list">
+
+    @for (tenant of filteredTenant(); track tenant._id) {
+
+      <div class="tenant-card">
+
+        <h3>{{ tenant.name }}</h3>
+
+        <p><strong>Room:</strong> {{ tenant.room }}</p>
+        <p><strong>Floor:</strong> {{ tenant.floor }}</p>
+        <p><strong>Contact:</strong> {{ tenant.contact }}</p>
+        <p><strong>Email:</strong> {{ tenant.email }}</p>
+
+        <div class="actions">
+          <button (click)="editTenant(tenant)">
+            Edit
+          </button>
+
+          <button (click)="deleteLeaders(tenant._id)">
+            Delete
+          </button>
+        </div>
+
+      </div>
+
+    } @empty {
+      <p>No tenants found on this floor.</p>
+    }
+
+  </div>
+
+</div>
