@@ -1,6 +1,6 @@
-<div class="tenant-form-container">
 
-  <h2>{{ editingId() ? 'Update Tenant' : 'Register New Tenant' }}</h2>
+<div class="tenant-form-container">
+  <h2>{{ editingId() ? 'Update Tenant' : 'Register Tenant' }}</h2>
 
   <form [formGroup]="tenantForm" (ngSubmit)="onSubmit()">
 
@@ -8,12 +8,11 @@
     <div class="form-group">
       <label for="name">Full Name</label>
       <input
-        id="name"
         type="text"
+        id="name"
         formControlName="name"
         placeholder="Enter tenant's full name"
       />
-
       @if (tenantForm.controls.name.touched && tenantForm.controls.name.invalid) {
         <small class="error">Name is required.</small>
       }
@@ -23,12 +22,11 @@
     <div class="form-group">
       <label for="contactNumber">Contact Number</label>
       <input
+        type="tel"
         id="contactNumber"
-        type="text"
         formControlName="contactNumber"
         placeholder="Enter contact number"
       />
-
       @if (tenantForm.controls.contactNumber.touched && tenantForm.controls.contactNumber.invalid) {
         <small class="error">Contact number is required.</small>
       }
@@ -38,12 +36,11 @@
     <div class="form-group">
       <label for="email">Email Address</label>
       <input
-        id="email"
         type="email"
+        id="email"
         formControlName="email"
         placeholder="Enter email address"
       />
-
       @if (tenantForm.controls.email.touched && tenantForm.controls.email.invalid) {
         <small class="error">Email is required.</small>
       }
@@ -53,28 +50,27 @@
     <div class="form-group">
       <label for="monthlyRent">Monthly Rent</label>
       <input
-        id="monthlyRent"
         type="number"
+        id="monthlyRent"
         formControlName="monthlyRent"
         placeholder="Enter monthly rent"
       />
-
       @if (tenantForm.controls.monthlyRent.touched && tenantForm.controls.monthlyRent.invalid) {
         <small class="error">Monthly rent is required.</small>
       }
     </div>
 
-    <!-- Move In Date -->
+    <!-- Room -->
     <div class="form-group">
-      <label for="moveInDate">Move-in Date</label>
+      <label for="moveRoom">Room</label>
       <input
-        id="moveInDate"
-        type="date"
-        formControlName="moveInDate"
+        type="text"
+        id="moveRoom"
+        formControlName="moveRoom"
+        placeholder="Enter room number (e.g. Room 101)"
       />
-
-      @if (tenantForm.controls.moveInDate.touched && tenantForm.controls.moveInDate.invalid) {
-        <small class="error">Move-in date is required.</small>
+      @if (tenantForm.controls.moveRoom.touched && tenantForm.controls.moveRoom.invalid) {
+        <small class="error">Room assignment is required.</small>
       }
     </div>
 
@@ -82,11 +78,10 @@
     <div class="form-group">
       <label for="status">Tenant Status</label>
       <select id="status" formControlName="status">
-        <option value="">Select Status</option>
+        <option value="" disabled>Select tenant status</option>
         <option value="Active">Active</option>
         <option value="Inactive">Inactive</option>
       </select>
-
       @if (tenantForm.controls.status.touched && tenantForm.controls.status.invalid) {
         <small class="error">Please select a tenant status.</small>
       }
@@ -94,7 +89,6 @@
 
     <!-- Buttons -->
     <div class="form-actions">
-
       <button type="submit" [disabled]="tenantForm.invalid">
         {{ editingId() ? 'Update Tenant' : 'Register Tenant' }}
       </button>
@@ -104,9 +98,7 @@
           Cancel
         </button>
       }
-
     </div>
 
   </form>
-
 </div>

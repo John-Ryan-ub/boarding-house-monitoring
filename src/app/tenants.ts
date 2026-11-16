@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class Tenants {
     private http = inject(HttpClient);
 
-    private apiUrl = 'http://localhost:300/api/tenant';
+    private apiUrl = 'http://localhost:3000/api/tenant';
 
     tenantList = signal<any[]>([]);
 

@@ -22,7 +22,7 @@ const Tenant = mongoose.model('Tenant', new mongoose.Schema({
     contactNumber: Number,
     email: String,
     monthlyRent: Number,
-    moveInDate: Date,
+    moveRoom: Number,
     status: String
 }));
 
