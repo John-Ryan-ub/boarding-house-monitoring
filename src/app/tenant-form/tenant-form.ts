@@ -16,7 +16,7 @@ export class TenantForm implements OnInit{
   editingId = signal<string | null>(null);
 
   tenantForm = this.formBuilder.nonNullable.group({
-    name: ['', [Validators.required, Validators.min(2)]],
+    name: ['', [Validators.required, Validators.minLength(2)]],
     contactNumber: ['', Validators.required],
     email: ['', Validators.required],
     monthlyRent: ['', Validators.required],
