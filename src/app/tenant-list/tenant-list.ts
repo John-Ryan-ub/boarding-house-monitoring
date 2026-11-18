@@ -39,8 +39,8 @@ export class TenantList implements OnInit{
     this.tenantService.fetchTenant();
   }
 
-  deleteLeaders(id: string): void {
-    if (confirm('Are you sure you want to delete this Gym Leader?')) {
+  deleteTenant(id: string): void {
+    if (confirm('Are you sure you want to remove this Tenant?')) {
       this.tenantService.deleteTenant(id);
     }
   }

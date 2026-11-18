@@ -6,41 +6,84 @@
 
   <!-- Floor Filter -->
   <div class="floor-filter">
-    <button (click)="setFloor('All')">All</button>
-    <button (click)="setFloor('1st Floor')">1st Floor</button>
-    <button (click)="setFloor('2nd Floor')">2nd Floor</button>
-    <button (click)="setFloor('3rd Floor')">3rd Floor</button>
+    <button
+      (click)="setFloor('All')"
+      [class.active]="selectedFloor() === 'All'">
+      All
+    </button>
+
+    <button
+      (click)="setFloor('1st Floor')"
+      [class.active]="selectedFloor() === '1st Floor'">
+      1st Floor
+    </button>
+
+    <button
+      (click)="setFloor('2nd Floor')"
+      [class.active]="selectedFloor() === '2nd Floor'">
+      2nd Floor
+    </button>
+
+    <button
+      (click)="setFloor('3rd Floor')"
+      [class.active]="selectedFloor() === '3rd Floor'">
+      3rd Floor
+    </button>
   </div>
 
-  <!-- Tenant List -->
+  <!-- Tenant Table -->
   <div class="tenant-list">
 
-    @for (tenant of filteredTenant(); track tenant._id) {
+    <table>
+      <thead>
+        <tr>
+          <th>Tenant Name</th>
+          <th>Room</th>
+          <th>Floor</th>
+          <th>Monthly Rent</th>
+          <th>Contact Number</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-      <div class="tenant-card">
+      <tbody>
 
-        <h3>{{ tenant.name }}</h3>
+        @for (tenant of filteredTenant(); track tenant._id) {
 
-        <p><strong>Room:</strong> {{ tenant.room }}</p>
-        <p><strong>Floor:</strong> {{ tenant.floor }}</p>
-        <p><strong>Contact:</strong> {{ tenant.contact }}</p>
-        <p><strong>Email:</strong> {{ tenant.email }}</p>
+          <tr>
+            <td>{{ tenant.name }}</td>
+            <td>{{ tenant.moveRoom }}</td>
+            <td>{{ tenant.floor }}</td>
+            <td>₱{{ tenant.monthlyRent }}</td>
+            <td>{{ tenant.contactNumber }}</td>
+            <td>{{ tenant.email }}</td>
+            <td>{{ tenant.status }}</td>
 
-        <div class="actions">
-          <button (click)="editTenant(tenant)">
-            Edit
-          </button>
+            <td>
+              <div class="actions">
+                <button (click)="editTenant(tenant)">
+                  Edit
+                </button>
 
-          <button (click)="deleteLeaders(tenant._id)">
-            Delete
-          </button>
-        </div>
+                <button (click)="deleteTenant(tenant._id)">
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
 
-      </div>
+        } @empty {
+          <tr>
+            <td colspan="8" class="empty-message">
+              No tenants found on this floor.
+            </td>
+          </tr>
+        }
 
-    } @empty {
-      <p>No tenants found on this floor.</p>
-    }
+      </tbody>
+    </table>
 
   </div>
 
