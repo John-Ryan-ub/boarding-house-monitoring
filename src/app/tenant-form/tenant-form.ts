@@ -20,6 +20,7 @@ export class TenantForm implements OnInit{
     contactNumber: ['', Validators.required],
     email: ['', Validators.required],
     monthlyRent: ['', Validators.required],
+    floor: ['1st Floor', Validators.required],
     moveRoom: ['', Validators.required],
     status: ['', [Validators.required, Validators.maxLength(150)]],
   });

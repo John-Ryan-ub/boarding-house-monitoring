@@ -60,6 +60,20 @@
       }
     </div>
 
+    <!-- Floor -->
+    <div class="form-group">
+      <label for="floor">Floor</label>
+      <select id="floor" formControlName="floor">
+        <option value="" disabled>Select floor</option>
+        <option value="1st Floor">1st Floor</option>
+        <option value="2nd Floor">2nd Floor</option>
+        <option value="3rd Floor">3rd Floor</option>
+      </select>
+      @if (tenantForm.controls.floor.touched && tenantForm.controls.floor.invalid) {
+        <small class="error">Please select a floor.</small>
+      }
+    </div>
+
     <!-- Room -->
     <div class="form-group">
       <label for="moveRoom">Room</label>
