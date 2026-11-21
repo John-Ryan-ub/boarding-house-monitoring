@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -37,6 +36,25 @@ app.post('/api/tenant', async (req, res) => {
   const tenant = new Tenant(req.body);
   await tenant.save();
   res.send(tenant);console.log("Added new Tenant:", tenant);
+});
+
+app.get('/api/tenant/:id', async (req, res) => {
+  try {
+    const tenant = await Tenant.findById(req.params.id);
+
+    if (!tenant) {
+      return res.status(404).json({
+        message: 'Tenant not found'
+      });
+    }
+
+    console.log('Fetched tenant:', tenant.name);
+
+    res.status(200).json(tenant);
+
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
 
 app.delete('/api/tenant/:id', async(req, res) => {
