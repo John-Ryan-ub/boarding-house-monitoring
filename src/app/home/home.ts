@@ -1,9 +1,10 @@
 import { Component, OnInit, inject, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Tenants } from '../tenants';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, CurrencyPipe],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html',

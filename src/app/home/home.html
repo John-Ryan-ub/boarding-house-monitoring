@@ -1,0 +1,135 @@
+<div class="dashboard">
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <div>
+      <h1>Welcome Back, Owner!</h1>
+      <p>Here's an overview of your boarding house today.</p>
+    </div>
+
+    <a routerLink="/tenant" class="primary-btn">
+      + Add New Tenant
+    </a>
+  </section>
+
+  <!-- Summary Cards -->
+  <section class="summary-cards">
+
+    <!-- Total Tenants -->
+    <div class="summary-card">
+      <div class="card-icon blue">👥</div>
+      <div>
+        <p>Total Tenants</p>
+        <h2>{{ totalTenants() }}</h2>
+        <span>Registered tenants</span>
+      </div>
+    </div>
+
+    <!-- Occupied Rooms -->
+    <div class="summary-card">
+      <div class="card-icon green">🏠</div>
+      <div>
+        <p>Occupied Rooms</p>
+        <h2>{{ occupiedRooms() }}</h2>
+        <span>Currently occupied</span>
+      </div>
+    </div>
+
+    <!-- Available Rooms -->
+    <div class="summary-card">
+      <div class="card-icon orange">🔑</div>
+      <div>
+        <p>Available Rooms</p>
+        <h2>{{ availableRooms() }}</h2>
+        <span>Ready for occupancy</span>
+      </div>
+    </div>
+
+    <!-- Monthly Income -->
+    <div class="summary-card">
+      <div class="card-icon purple">💰</div>
+      <div>
+        <p>Monthly Income</p>
+        <h2>{{ monthlyIncome() | currency:'PHP':'symbol':'1.2-2' }}</h2>
+        <span>Expected rental income</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Main Dashboard Content -->
+  <section class="dashboard-content">
+
+    <!-- Quick Actions -->
+    <div class="content-card">
+      <h2>Quick Actions</h2>
+      <p class="subtitle">Manage your boarding house easily.</p>
+
+      <div class="quick-actions">
+
+        <a routerLink="/tenant" class="action-item">
+          <div class="action-icon blue">👤</div>
+          <div>
+            <h3>Manage Tenants</h3>
+            <p>View and register tenants</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a routerLink="/rooms" class="action-item">
+          <div class="action-icon green">🏠</div>
+          <div>
+            <h3>Manage Rooms</h3>
+            <p>Monitor room availability</p>
+          </div>
+          <span>→</span>
+        </a>
+
+        <a routerLink="/payments" class="action-item">
+          <div class="action-icon purple">💳</div>
+          <div>
+            <h3>Manage Payments</h3>
+            <p>Track tenant rental payments</p>
+          </div>
+          <span>→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Boarding House Information -->
+    <div class="content-card">
+      <h2>Boarding House Overview</h2>
+      <p class="subtitle">Important information about your property.</p>
+
+      <div class="overview-item">
+        <span>Property Status</span>
+        <strong class="status-active">Active</strong>
+      </div>
+
+      <div class="overview-item">
+        <span>Management</span>
+        <strong>Owner</strong>
+      </div>
+
+      <div class="overview-item">
+        <span>System</span>
+        <strong>Boarding House Management</strong>
+      </div>
+
+      <div class="overview-item">
+        <span>Total Room Capacity</span>
+        <strong>{{ totalRoomCapacity }} Rooms</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="dashboard-footer">
+    <p>Boarding House Management System © 2026</p>
+    <span>Owner Dashboard</span>
+  </footer>
+
+</div>
