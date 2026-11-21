@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Home } from './home/home';
 import { TenantForm } from './tenant-form/tenant-form';
 import { TenantList } from './tenant-list/tenant-list';
+import { NotFound } from './not-found/not-found';
 
 export const routes: Routes = [
   { path: 'home', component: Home },
@@ -9,4 +10,5 @@ export const routes: Routes = [
   { path: 'tenant/:id/edit', component: TenantForm },
   { path: 'tenantlist', component: TenantList },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: NotFound }
 ];
